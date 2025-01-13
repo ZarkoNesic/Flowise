@@ -11,12 +11,4 @@ export * from './storageUtils'
 export * from './handler'
 export * from './followUpPrompts'
 
-const apiKeyMiddleware = (req, res, next) => {
-  const apiKey = req.headers['x-api-key'];
-  if (apiKey !== process.env.FLOWISE_API_KEY) {
-    return res.status(403).send('Unauthorized Access');
-  }
-  next();
-};
 
-app.use(apiKeyMiddleware);
